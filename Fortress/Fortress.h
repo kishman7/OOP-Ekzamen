@@ -11,10 +11,12 @@
 using namespace std;
 
 class Shooter {
-protected:
+//protected:
+	//string amunition;
+	//int* num_amunition;
+public:
 	string amunition;
 	int* num_amunition;
-public:
 	void AddAmunition(string shooter, string amunition, int* num_amunition) { // метод додавання амуниції
 		this->amunition = amunition;
 		this->num_amunition = num_amunition;
@@ -35,12 +37,11 @@ public:
 };
 
 class Archer : public Shooter {
-public:
+	public:
 	int arrow; // стріли
 	void Shot() 	{ // метод постріл
 		cout << "Archer makes a shot." << endl;
-		((Shooter*)this)->Shot();
-	}
+		((Shooter*)this)->Shot();}
 };
 
 class Ranger : public Shooter {
@@ -70,7 +71,7 @@ public:
 class Fortress : public ArcherTower, public Catapult {
 public:
 	static Fortress* obj;
-	static Fortress* getObj(int* arrows, int* stones);
+	static Fortress* getObj(int *arrows, int* stones);
 	Fortress(int* arrows, int* stones) : ArcherTower(arrows), Catapult(){
 		((Shooter*)((Catapult*)this))->AddAmunition("Catapult", "stones", stones);
 	}

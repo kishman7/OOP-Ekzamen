@@ -1,6 +1,6 @@
 #include "Fortress.h"
 
-Fortress* Fortress::getObj(int* arrows, int* stones)
+Fortress* Fortress::getObj(int *arrows, int* stones) // реалізація створення об’єкта класу Fortress через патерн Singlton
 {
 	if (obj == nullptr)
 	{
@@ -8,19 +8,29 @@ Fortress* Fortress::getObj(int* arrows, int* stones)
 	}
 	return obj;
 }
-Fortress* Fortress::obj = 0;
+Fortress* Fortress::obj = nullptr;
 
 int main() {
 	int arrow = 4;
 	int stone = 1;
 
 	Fortress* fortress = Fortress::getObj(&arrow, &stone);
+	//Fortress* fortress1 = Fortress::getObj(&arrow, &stone);
 	//Fortress fortress(&arrow, &stone);
 	//Fortress fortress1(&arrow, &stone);
 
-	((Archer*)((ArcherTower*)&fortress))->Shot();
+	//((Archer)(*fortress1)).Shot();
+	//((Archer)(*fortress1)).Shot();
 
-	//((Archer*)((ArcherTower*)&fortress))->Shot();
+	((Archer)(*fortress)).Shot(); 
+	((Archer)(*fortress)).Shot();
+	((Archer)(*fortress)).Shot();
+	
+	((Ranger)(*fortress)).Shot();
+	((Ranger)(*fortress)).Shot();
+	((Catapult)(*fortress)).Shot();
+
+	//((Archer*)((ArcherTower*)&fortress))->Shot();два косяка
 	//((Archer*)((ArcherTower*)&fortress))->Shot();
 	//((Archer*)((ArcherTower*)&fortress))->Shot();
 
